@@ -1,0 +1,9 @@
+{
+    "name": "lenovo/php-mongo",
+    "description": "absensi-karyawan",
+    "type": "n",
+    "license": "n",
+    "require": {
+        "mongodb/mongodb": "^1.15"
+    }
+}
