@@ -39,7 +39,6 @@ if (isset($_POST['submit'])) {
         <div class="header text-center my-4">
             <h2>Edit Data Buku</h2>
         </div>
-        <h1><?= $karyawan['nama'] ?></h1>
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
                 <form action="" method="POST">

@@ -6,6 +6,7 @@ $karyawanCollection = $db->karyawan;
 
 $getDatakaryawan = $karyawanCollection->find();
 
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +46,7 @@ $getDatakaryawan = $karyawanCollection->find();
                         <td><?= $karyawan->tgl_lahir ?></td>
                         <td>
                             <a href="views/edit.php?id=<?= $karyawan["_id"] ?>">Ubah Data</a>
-                            <a href="views/hapus.php">Hapus Data</a>
+                            <a href="views/hapus.php?id=<?= $karyawan["_id"] ?>" onclick="confirm('Yakin?')">Hapus Data</a>
                         </td>
 
                     </tr>

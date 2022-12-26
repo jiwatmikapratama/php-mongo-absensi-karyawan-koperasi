@@ -49,3 +49,28 @@ function updateKaryawan($dataKaryawan)
 
     // return $updateOneResult->getUpdatedCount();
 }
+
+// if (isset($_GET['id'])) {
+//     $mhs = $collection->findOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);
+// }
+// if (isset($_POST['submit'])) {
+//     require 'config.php';
+//     $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);
+//     $_SESSION['success'] = "Data Mahasiswa Berhasil dihapus";
+//     header("Location: index.php");
+// }
+
+function hapusKaryawan($dataKaryawan)
+{
+    global $client;
+
+    $collection = $client->absensi_karyawan->karyawan;
+
+    $hapusOneResult = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);
+
+    // printf("Inserted %d document(s)\n", $updateOneResult->getUpdatedCount());
+
+    // var_dump($updateOneResult->getUpdatedId());
+
+    // return $updateOneResult->getUpdatedCount();
+}
