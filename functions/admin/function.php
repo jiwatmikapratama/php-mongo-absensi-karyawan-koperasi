@@ -1,23 +1,21 @@
 <?php
 require('../../koneksi.php');
 
-function addKaryawan($dataKaryawan)
+function buatJadwal($dataKaryawan)
 {
     global $client;
 
-    $collection = $client->absensi_karyawan->karyawan;
+    $collection = $client->absensi_karyawan->absensi;
 
     $insertOneResult = $collection->insertOne([
 
         'nama' => $_POST['nama'],
-        'alamat' => $_POST['nama'],
-        'tgl_lahir' => $_POST['tgl_lahir'],
-        'no_telp' => [$_POST['no_telp']]
-
-        // 'nama' => 'nama',
-        // 'alamat' => 'test',
-        // 'tgl_lahir' => '2021-01-01',
-        // 'no_telp' => '0987272'
+        'tgl_absensi' => $_POST['tgl_absensi'],
+        'karyawan' => [
+            'id' => '',
+            'nama_karyawan' => '',
+            'status' => ''
+        ]
     ]);
 
     printf("Inserted %d document(s)\n", $insertOneResult->getInsertedCount());

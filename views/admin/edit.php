@@ -1,5 +1,5 @@
 <?php
-require_once '../functions/karyawan/function.php';
+require_once '../../functions/karyawan/function.php';
 
 $object = new MongoDB\BSON\ObjectID($_GET['id']);
 

@@ -1,13 +1,13 @@
 <?php
-require_once '../functions/karyawan/function.php';
+require_once '../../functions/admin/function.php';
 
 if (isset($_POST['submit'])) {
 
-    if (addKaryawan($_POST) > 0) {
+    if (buatJadwal($_POST) > 0) {
         echo '<div class="alert alert-success" role="alert">
         Data Berhasil Ditambahkan
       </div>';
-        header("location: ../index.php");
+        header("location: ../../index.php");
     } else {
         echo '<div class="alert alert-danger" role="alert">
         Data Gagal Ditambahkan
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="container">
         <div class="header text-center my-4">
-            <h2>Tambah Data Buku</h2>
+            <h2>Buat Absen</h2>
         </div>
 
         <div class="row d-flex justify-content-center">
@@ -41,23 +41,15 @@ if (isset($_POST['submit'])) {
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" id="alamat" name="alamat" required>
+                        <label for="tgl_absensi" class="form-label" for="tgl_absensi">Tanggal Absensi</label>
+                        <input type="date" class="form-control" id="tgl_absensi" name="tgl_absensi" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="no_telp" class="form-label">No. Telp</label>
-                        <input type="text" class="form-control" id="no_telp" name="no_telp" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tgl_lahir" class="form-label" for="tgl_lahir">Tahun Terbit</label>
-                        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Tambah Data</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Buat Absen</button>
                 </form>
             </div>
             <div class="row">
                 <div class="col-8">
-                    <a href="../index.php" class="btn btn-warning">Kembali</a>
+                    <a href="../../index.php" class="btn btn-warning">Kembali</a>
 
                 </div>
             </div>

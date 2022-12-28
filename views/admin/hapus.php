@@ -1,5 +1,5 @@
 <?php
-require_once '../functions/karyawan/function.php';
+require_once '../../functions/karyawan/function.php';
 // Delete get Id
 $object = new MongoDB\BSON\ObjectID($_GET['id']);
 if (isset($_GET['id'])) {
