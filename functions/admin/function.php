@@ -50,19 +50,17 @@ function buatJadwal($dataKaryawan)
 //     // return $updateOneResult->getUpdatedCount();
 // }
 
-function updateKaryawan($dataKaryawan)
+function updateAbsensi($dataAbsensi)
 {
     global $client;
 
-    $collection = $client->absensi_karyawan->karyawan;
+    $collection = $client->absensi_karyawan->absensi;
 
     $updateOneResult = $collection->updateOne(
         ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
         ['$set' => [
             'nama' => $_POST['nama'],
-            'alamat' => $_POST['nama'],
-            'tgl_lahir' => $_POST['tgl_lahir'],
-            'no_telp' => [$_POST['no_telp']]
+            'tgl_absensi' => $_POST['tgl_absensi'],
         ]]
     );
 
@@ -84,11 +82,11 @@ function updateKaryawan($dataKaryawan)
 //     header("Location: index.php");
 // }
 
-function hapusKaryawan($dataKaryawan)
+function hapusAbsensi($dataKaryawan)
 {
     global $client;
 
-    $collection = $client->absensi_karyawan->karyawan;
+    $collection = $client->absensi_karyawan->absensi;
 
     $hapusOneResult = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);
 

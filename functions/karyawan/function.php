@@ -57,14 +57,29 @@ function absensiKaryawan($dataKaryawan)
     $collection = $client->absensi_karyawan->absensi;
 
     $updateOneResult = $collection->updateOne(
-        ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
-        ['$set' => [
+        // ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
+        // // '_id' => '',
+        // // 'nama' => '',
+        // // 'tgl_lahir' => '',
+        // [
+        //     '$push' => [
+        //         'karyawan' => [
+        //             'nama' => $_POST['nama'],
+        //             'status' => $_POST['status'],
+        //         ]
+
+        //     ]
+        // ]
+        array('_id' => new MongoDB\BSON\ObjectID($_GET['id'])),
+
+        ['$push' => [
             'karyawan' => [
-                'id' =>  new MongoDB\BSON\ObjectID($_GET['id']),
                 'nama' => $_POST['nama'],
                 'status' => $_POST['status'],
-            ],
+            ]
+
         ]]
+
     );
 
     // printf("Inserted %d document(s)\n", $updateOneResult->getUpdatedCount());

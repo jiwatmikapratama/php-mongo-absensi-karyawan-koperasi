@@ -8,7 +8,7 @@ $getDatakaryawan = $karyawanCollection->find();
 
 // Memilih collection absensi
 $absensiCollection = $db->absensi;
-$getDataabsesi = $absensiCollection->find();
+$getAbsensi = $absensiCollection->find();
 
 ?>
 
@@ -64,6 +64,33 @@ $getDataabsesi = $absensiCollection->find();
             </tbody>
         </table>
         <a href="buat_jadwal.php">Buat Jadwal</a>
+
+        <!-- Jadwal -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Tanggal presensi</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i = 1 ?>
+                <?php foreach ($getAbsensi as $absensi) { ?>
+                    <tr>
+                        <th scope="row"><?= $i ?></th>
+                        <td><?= $absensi->nama ?></td>
+                        <td><?= $absensi->tgl_absensi ?></td>
+                        <td>
+                            <a href="editAbsensi.php?id=<?= $absensi["_id"] ?>">Ubah Absensi</a>
+                            <a href="hapus.php?id=<?= $absensi["_id"] ?>" onclick="confirm('Yakin?')">Hapus Absensi</a>
+                        </td>
+                    </tr>
+                    <?php $i++ ?>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 
 

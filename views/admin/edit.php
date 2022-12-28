@@ -1,21 +1,21 @@
 <?php
-require_once '../../functions/karyawan/function.php';
+require_once '../../functions/admin/function.php';
 
 $object = new MongoDB\BSON\ObjectID($_GET['id']);
 
 if (isset($_GET['id'])) {
-    $absensi = $db->absensi->findOne(['_id' => $object]);
+    $karyawan = $db->karyawan->findOne(['_id' => $object]);
 }
 
 if (isset($_POST['submit'])) {
-    if (absensiKaryawan($_POST) > 0) {
+    if (updateAbsensi($_POST) > 0) {
         echo '<div class="alert alert-success" role="alert">
-        Absensi berhasil direkam
+        Data Karyawan Berhasil Diupdate
       </div>';
-        header("location: index.php");
+        header("location: ../index.php");
     } else {
         echo '<div class="alert alert-danger" role="alert">
-        Absensi gagal silahkan coba lagi
+        Data Karyawan Gagal Diupdate
       </div>';
     }
     $_SESSION['success'] = "Data Mahasiswa berhasil diubah";
@@ -37,32 +37,22 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="container">
         <div class="header text-center my-4">
-            <h2>Absensi Karyawan</h2>
+            <h2>Ubah Absensi</h2>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="id" name="id" value="<?= $absensi->_id; ?>" disabled>
+                        <input type="text" class="form-control" id="id" name="id" value="<?= $karyawan->_id; ?>" disabled>
                     </div>
-                    <!-- <div class="mb-3">
-                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $absensi->nama; ?>" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <input type="date" class="form-control" id="tgl_absensi" name="tgl_absensi" value="<?= $absensi->tgl_absensi; ?>" disabled>
-                    </div> -->
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required value="">
+                        <input type="text" class="form-control" id="nama" name="nama" required value="<?= $karyawan->nama; ?>">
                     </div>
-                    <div class=" mb-3">
-                        <select class="form-select" aria-label="Default select example" name="status">
-                            <option selected>Status: </option>
-                            <option value="hadir">Hadir</option>
-                            <option value="tidak hadir">Tidak Hadir</option>
-                        </select>
+                    <div class="mb-3">
+                        <label for="tgl_absensi" class="form-label">tgl_absensi</label>
+                        <input type="text" class="form-control" id="tgl_absensi" name="tgl_absensi" required value="<?= $absensi->tgl_absensi; ?>">
                     </div>
-
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 </form>
             </div>
