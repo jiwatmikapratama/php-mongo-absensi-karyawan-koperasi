@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
         echo '<div class="alert alert-success" role="alert">
         Data Berhasil Ditambahkan
       </div>';
-        header("location: ../../index.php");
+        header("location: index.php");
     } else {
         echo '<div class="alert alert-danger" role="alert">
         Data Gagal Ditambahkan
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="row">
                 <div class="col-8">
-                    <a href="../../index.php" class="btn btn-warning">Kembali</a>
+                    <a href="index.php" class="btn btn-warning">Kembali</a>
 
                 </div>
             </div>

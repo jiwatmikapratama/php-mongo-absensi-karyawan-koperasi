@@ -25,6 +25,31 @@ function buatJadwal($dataKaryawan)
     return $insertOneResult->getInsertedCount();
 }
 
+// function absensiKaryawan($dataKaryawan)
+// {
+//     global $client;
+
+//     $collection = $client->absensi_karyawan->absensi;
+
+//     $updateOneResult = $collection->updateOne(
+//         ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
+//         ['$set' => [
+//             'karyawan' => [
+//                 'id' =>  new MongoDB\BSON\ObjectID($_GET['id']),
+//                 'nama' => $_POST['nama'],
+//             ],
+
+//             'status' => $_POST['status'],
+//         ]]
+//     );
+
+//     // printf("Inserted %d document(s)\n", $updateOneResult->getUpdatedCount());
+
+//     // var_dump($updateOneResult->getUpdatedId());
+
+//     // return $updateOneResult->getUpdatedCount();
+// }
+
 function updateKaryawan($dataKaryawan)
 {
     global $client;
@@ -47,6 +72,7 @@ function updateKaryawan($dataKaryawan)
 
     // return $updateOneResult->getUpdatedCount();
 }
+
 
 // if (isset($_GET['id'])) {
 //     $mhs = $collection->findOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);

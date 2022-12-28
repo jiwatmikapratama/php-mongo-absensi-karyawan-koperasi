@@ -37,9 +37,33 @@ function updateKaryawan($dataKaryawan)
         ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
         ['$set' => [
             'nama' => $_POST['nama'],
-            'alamat' => $_POST['nama'],
+            'alamat' => $_POST['alamat'],
             'tgl_lahir' => $_POST['tgl_lahir'],
             'no_telp' => [$_POST['no_telp']]
+        ]]
+    );
+
+    // printf("Inserted %d document(s)\n", $updateOneResult->getUpdatedCount());
+
+    // var_dump($updateOneResult->getUpdatedId());
+
+    // return $updateOneResult->getUpdatedCount();
+}
+
+function absensiKaryawan($dataKaryawan)
+{
+    global $client;
+
+    $collection = $client->absensi_karyawan->absensi;
+
+    $updateOneResult = $collection->updateOne(
+        ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
+        ['$set' => [
+            'karyawan' => [
+                'id' =>  new MongoDB\BSON\ObjectID($_GET['id']),
+                'nama' => $_POST['nama'],
+                'status' => $_POST['status'],
+            ],
         ]]
     );
 

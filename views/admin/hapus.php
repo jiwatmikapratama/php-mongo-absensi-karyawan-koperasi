@@ -7,4 +7,4 @@ if (isset($_GET['id'])) {
 }
 $karyawan = $db->karyawan->deleteOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);
 $_SESSION['success'] = "Data Mahasiswa Berhasil dihapus";
-header("Location: ../index.php");
+header("Location: index.php");

@@ -19,7 +19,6 @@ if (isset($_POST["login"])) {
     foreach ($searchKaryawan as $findKaryawan) {
         $storeEmail = $findKaryawan['email'];
         $storePassword = $findKaryawan['password'];
-        $storeNama = $findKaryawan['nama'];
     }
 
     if ($email == $storeEmail && $password == $storePassword) {
@@ -27,11 +26,11 @@ if (isset($_POST["login"])) {
         $_SESSION["login"] = true;
         // $_SESSION["email"] = $email;
 
-        if ($row['email'] == "admin@gmail.com") {
-            header("Location: ../../index.php");
+        if ($email == "admin@gmail.com") {
+            header("Location: admin/index.php");
             exit;
         } else {
-            header("Location: index.php");
+            header("Location: user/index.php");
             exit;
         }
     }
@@ -82,7 +81,7 @@ if (isset($_POST["login"])) {
 
             <button type="submit" class="btn btn-warning" name="login">Submit</button>
             <div class="mb-3 text-center">
-                <p>Belum punya akun? <a href="registrasi.php">Daftar</a></p>
+                <p>Belum punya akun? <a href="register.php">Daftar</a></p>
             </div>
 
     </form>
