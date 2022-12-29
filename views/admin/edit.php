@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['submit'])) {
-    if (updateAbsensi($_POST) > 0) {
+    if (updateKaryawan($_POST) > 0) {
         echo '<div class="alert alert-success" role="alert">
         Data Karyawan Berhasil Diupdate
       </div>';
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="container">
         <div class="header text-center my-4">
-            <h2>Ubah Absensi</h2>
+            <h2>Ubah Data Karyawan</h2>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
@@ -50,8 +50,24 @@ if (isset($_POST['submit'])) {
                         <input type="text" class="form-control" id="nama" name="nama" required value="<?= $karyawan->nama; ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="tgl_absensi" class="form-label">tgl_absensi</label>
-                        <input type="text" class="form-control" id="tgl_absensi" name="tgl_absensi" required value="<?= $absensi->tgl_absensi; ?>">
+                        <label for="alamat" class="form-label">alamat</label>
+                        <input type="text" class="form-control" id="alamat" name="alamat" required value="<?= $karyawan->alamat; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">email</label>
+                        <input type="text" class="form-control" id="email" name="email" required value="<?= $karyawan->email; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="no_telp" class="form-label">no_telp</label>
+                        <input type="text" class="form-control" id="no_telp" name="no_telp" required value="<?= $karyawan->no_telp; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tgl_lahir" class="form-label">tgl_lahir</label>
+                        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" required value="<?= $karyawan->tgl_lahir; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">password</label>
+                        <input type="text" class="form-control" id="password" name="password" required value="<?= $karyawan->password; ?>">
                     </div>
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 </form>

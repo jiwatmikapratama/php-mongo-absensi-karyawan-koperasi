@@ -54,39 +54,31 @@ function absensiKaryawan($dataKaryawan)
 {
     global $client;
 
-    $collection = $client->absensi_karyawan->absensi;
+    $collection = $client->absensi_karyawan->absensi;;
+
 
     $updateOneResult = $collection->updateOne(
-        // ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
-        // // '_id' => '',
-        // // 'nama' => '',
-        // // 'tgl_lahir' => '',
-        // [
-        //     '$push' => [
-        //         'karyawan' => [
-        //             'nama' => $_POST['nama'],
-        //             'status' => $_POST['status'],
-        //         ]
+        ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
+        [
+            '$push' => [
+                'karyawan' => [
+                    'nama_karyawan' => $_POST['nama_karyawan'],
+                    'status' => $_POST['status']
 
-        //     ]
-        // ]
-        array('_id' => new MongoDB\BSON\ObjectID($_GET['id'])),
-
-        ['$push' => [
-            'karyawan' => [
-                'nama' => $_POST['nama'],
-                'status' => $_POST['status'],
+                ],
+                // 'absensi_status' => [
+                // ]
             ]
+        ],
 
-        ]]
+
+
+        // 'nama_karyawan' => $_POST['nama_karyawan'],
+        // 'status' => $_POST['status']
+
+
 
     );
-
-    // printf("Inserted %d document(s)\n", $updateOneResult->getUpdatedCount());
-
-    // var_dump($updateOneResult->getUpdatedId());
-
-    // return $updateOneResult->getUpdatedCount();
 }
 
 // if (isset($_GET['id'])) {

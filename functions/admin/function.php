@@ -11,11 +11,11 @@ function buatJadwal($dataKaryawan)
 
         'nama' => $_POST['nama'],
         'tgl_absensi' => $_POST['tgl_absensi'],
-        'karyawan' => [
-            'id' => '',
-            'nama_karyawan' => '',
-            'status' => ''
-        ]
+        // 'karyawan' => [
+        //     'id' => '',
+        //     'nama_karyawan' => '',
+        //     'status' => ''
+        // ]
     ]);
 
     printf("Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
@@ -25,30 +25,6 @@ function buatJadwal($dataKaryawan)
     return $insertOneResult->getInsertedCount();
 }
 
-// function absensiKaryawan($dataKaryawan)
-// {
-//     global $client;
-
-//     $collection = $client->absensi_karyawan->absensi;
-
-//     $updateOneResult = $collection->updateOne(
-//         ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
-//         ['$set' => [
-//             'karyawan' => [
-//                 'id' =>  new MongoDB\BSON\ObjectID($_GET['id']),
-//                 'nama' => $_POST['nama'],
-//             ],
-
-//             'status' => $_POST['status'],
-//         ]]
-//     );
-
-//     // printf("Inserted %d document(s)\n", $updateOneResult->getUpdatedCount());
-
-//     // var_dump($updateOneResult->getUpdatedId());
-
-//     // return $updateOneResult->getUpdatedCount();
-// }
 
 function updateAbsensi($dataAbsensi)
 {
@@ -61,6 +37,31 @@ function updateAbsensi($dataAbsensi)
         ['$set' => [
             'nama' => $_POST['nama'],
             'tgl_absensi' => $_POST['tgl_absensi'],
+        ]]
+    );
+
+    // printf("Inserted %d document(s)\n", $updateOneResult->getUpdatedCount());
+
+    // var_dump($updateOneResult->getUpdatedId());
+
+    // return $updateOneResult->getUpdatedCount();
+}
+
+function updateKaryawan($dataAbsensi)
+{
+    global $client;
+
+    $collection = $client->absensi_karyawan->karyawan;
+
+    $updateOneResult = $collection->updateOne(
+        ['_id' => new MongoDB\BSON\ObjectID($_GET['id'])],
+        ['$set' => [
+            'nama' => $_POST['nama'],
+            'alamat' => $_POST['alamat'],
+            'email' => $_POST['email'],
+            'no_telp' => $_POST['no_telp'],
+            'tgl_lahir' => $_POST['tgl_lahir'],
+
         ]]
     );
 

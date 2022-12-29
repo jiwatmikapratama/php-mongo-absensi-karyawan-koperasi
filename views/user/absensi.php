@@ -45,19 +45,19 @@ if (isset($_POST['submit'])) {
                     <div class="mb-3">
                         <input type="text" class="form-control" id="id" name="id" value="<?= $absensi->_id; ?>" disabled>
                     </div>
-                    <!-- <div class="mb-3">
+                    <div class="mb-3">
                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $absensi->nama; ?>" disabled>
                     </div>
                     <div class="mb-3">
                         <input type="date" class="form-control" id="tgl_absensi" name="tgl_absensi" value="<?= $absensi->tgl_absensi; ?>" disabled>
-                    </div> -->
+                    </div>
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required value="">
+                        <label for="nama_karyawan" class="form-label">Nama Karyawan</label>
+                        <input type="text" class="form-control" id="nama_karyawan" name="nama_karyawan" required value="">
                     </div>
                     <div class=" mb-3">
-                        <select class="form-select" aria-label="Default select example" name="status">
-                            <option selected>Status: </option>
+                        <select class="form-select" aria-label="Default select example" name="status" required>
+                            <option selected value="">Status: </option>
                             <option value="hadir">Hadir</option>
                             <option value="tidak hadir">Tidak Hadir</option>
                         </select>
