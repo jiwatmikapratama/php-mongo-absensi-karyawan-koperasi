@@ -2,7 +2,7 @@
 session_start();
 require_once '../koneksi.php';
 if (isset($_SESSION["login"])) {
-    header("Location: ../index.php");
+    header("Location: karyawan/index.php");
     exit;
 }
 
@@ -30,7 +30,7 @@ if (isset($_POST["login"])) {
             header("Location: admin/index.php");
             exit;
         } else {
-            header("Location: user/index.php");
+            header("Location: karyawan/index.php");
             exit;
         }
     }

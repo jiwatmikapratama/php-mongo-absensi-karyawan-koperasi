@@ -55,8 +55,8 @@ $getDataAbsensi = $absensiCollection->find();
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="riwayat-absen.php">RIWAYAT ABSENSI</a></li>
-                    <li><a class="nav-link scrollto active" href="/">ABSENSI</a></li>
+                    <!-- <li><a class="nav-link scrollto" href="riwayat-absen.php">RIWAYAT ABSENSI</a></li> -->
+                    <li><a class="nav-link scrollto active" href="index.php">ABSENSI</a></li>
                     <li><a class="nav-link scrollto" href="../../functions/logout.php">LOGOUT</a></li>
 
                 </ul>
@@ -73,7 +73,7 @@ $getDataAbsensi = $absensiCollection->find();
         <h2>Absen Karyawan</h2>
         <table class="table">
             <thead class="table-dark">
-                <tr>
+                <tr class="text-center">
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Tanggal Presensi</th>
@@ -101,8 +101,9 @@ $getDataAbsensi = $absensiCollection->find();
 
                             <?php echo $absensi->karyawan[$i]->status ?>
                         </td> -->
-                        <td>
-                            <a href="absensi.php?id=<?= $absensi["_id"] ?>">Absen</a>
+                        <td class="text-center">
+                            <a href="absensi.php?id=<?= $absensi["_id"] ?>" class="btn btn-warning">Absensi</a>
+                            <a href="data-absensi.php?id=<?= $absensi["_id"] ?>" class="btn btn-primary">Lihat Data Absensi</a>
                         </td>
 
                     </tr>
