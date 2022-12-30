@@ -1,7 +1,7 @@
 <?php
 require('../../koneksi.php');
 
-function buatJadwal($dataKaryawan)
+function buatAbsensi($dataAbsensi)
 {
     global $client;
 
@@ -11,11 +11,7 @@ function buatJadwal($dataKaryawan)
 
         'nama' => $_POST['nama'],
         'tgl_absensi' => $_POST['tgl_absensi'],
-        // 'karyawan' => [
-        //     'id' => '',
-        //     'nama_karyawan' => '',
-        //     'status' => ''
-        // ]
+        'karyawan' => []
     ]);
 
     printf("Inserted %d document(s)\n", $insertOneResult->getInsertedCount());

@@ -5,27 +5,19 @@ if (!isset($_SESSION["login"])) {
     header("Location: ../login.php");
     exit;
 }
-require_once '../../functions/admin/function.php';
-
-$object = new MongoDB\BSON\ObjectID($_GET['id']);
-
-if (isset($_GET['id'])) {
-    $absensi = $db->absensi->findOne(['_id' => $object]);
-}
 
 if (isset($_POST['submit'])) {
-    if (updateAbsensi($_POST) > 0) {
+
+    if (buatAbsensi($_POST) > 0) {
         echo '<div class="alert alert-success" role="alert">
-        Data Absensi Berhasil Diupdate
+        Data Berhasil Ditambahkan
       </div>';
         header("location: index.php");
     } else {
         echo '<div class="alert alert-danger" role="alert">
-        Data Absensi Gagal Diupdate
+        Data Gagal Ditambahkan
       </div>';
     }
-    $_SESSION['success'] = "Data Mahasiswa berhasil diubah";
-    header("Location: index.php");
 }
 ?>
 
@@ -49,7 +41,7 @@ if (isset($_POST['submit'])) {
     <!-- css -->
     <link href="/css/signin.css" rel="stylesheet">
 
-    <title>Absensi Koperasi | Edit Absensi</title>
+    <title>Absensi Koperasi | Buat Absensi</title>
 
     <!-- Fonts & Icon-->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -63,29 +55,33 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="container">
         <div class="header text-center my-4">
-            <h2>Ubah Absensi</h2>
+            <h2>Buat Absensi</h2>
         </div>
+
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <input type="hidden" class="form-control" id="id" name="id" value="<?= $absensi->_id; ?>" disabled>
-                    </div>
-                    <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required value="<?= $absensi->nama; ?>">
+                        <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="tgl_absensi" class="form-label">tgl_absensi</label>
-                        <input type="text" class="form-control" id="tgl_absensi" name="tgl_absensi" required value="<?= $absensi->tgl_absensi; ?>">
+                        <label for="tgl_absensi" class="form-label" for="tgl_absensi">Tanggal Absensi</label>
+                        <input type="date" class="form-control" id="tgl_absensi" name="tgl_absensi" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Buat Absensi</button>
                     <a href="index.php" class="btn btn-warning">Kembali</a>
 
                 </form>
             </div>
+            <div class="row">
+                <div class="col-8">
+
+                </div>
+            </div>
         </div>
 
+        <!-- Footer -->
         <footer id="footer" class="text-center">
             <small>Copyright &copy; 2022 - Pendidikan Teknik Informatika</small>
 

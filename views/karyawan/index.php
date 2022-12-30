@@ -1,5 +1,10 @@
 <?php
 session_start();
+require_once '../../functions/admin/function.php';
+if (!isset($_SESSION["login"])) {
+    header("Location: ../login.php");
+    exit;
+}
 require_once '../../koneksi.php';
 
 // memilih collecttion karyawan
@@ -113,9 +118,6 @@ $getDataAbsensi = $absensiCollection->find();
             </tbody>
         </table>
     </div>
-    <h1><?= $_SESSION["login"]  ?></h1>
-    <a href="../../functions/logout.php">Logout</a>
-
 
     <footer id="footer" class="text-center">
         <small>Copyright &copy; 2022 - Pendidikan Teknik Informatika</small>

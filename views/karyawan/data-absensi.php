@@ -1,16 +1,21 @@
 <?php
 session_start();
+require_once '../../functions/admin/function.php';
+if (!isset($_SESSION["login"])) {
+    header("Location: ../login.php");
+    exit;
+}
 require_once '../../koneksi.php';
 
 $object = new MongoDB\BSON\ObjectID($_GET['id']);
 
-// if (isset($_GET['id'])) {
-//     $absensi = $db->absensi->findOne(['_id' => $object]);
-// }
+if (isset($_GET['id'])) {
+    $absensi = $db->absensi->findOne(['_id' => $object]);
+}
 
 // Memilih collection list absensi
 $absensiCollection = $db->absensi;
-$getDataAbsensi = $absensiCollection->find();
+$getDataAbsensi = $absensiCollection->find(['_id' => $object]);
 
 
 // $nama_karyawan = $_POST["nama"];
@@ -85,28 +90,17 @@ $getDataAbsensi = $absensiCollection->find();
             </thead>
             <tbody class="text-center">
                 <?php $i = 1 ?>
-                <!-- <?php // memilih collecttion karyawan
-                        $absensiCollection = $db->absensi;
-                        $cekabsen = $absensiCollection->find(['karyawan.nama_karyawan' => $nama_karyawan]);
-                        ?> -->
+
                 <?php foreach ($getDataAbsensi as $absensi) { ?>
-                    <tr>
-                        <th scope="row"><?= $i ?></th>
+                    <?php foreach ($absensi->karyawan as $data) { ?>
+                        <tr>
+                            <th scope="row"><?= $i ?></th>
 
-                        <td>
-                            <?php foreach ( $absensi as $a) { ?>
-                                <?= $absensi->karyawan[$i]['nama_karyawan'] ?>
-
-                            <?php } ?>
-                            <!--                             
-                            <?= $absensi->karyawan[1]['nama_karyawan'] ?>
-                            <?= $absensi->karyawan[2]['nama_karyawan'] ?> -->
-                        </td>
-                        <td>
-                            <?= $absensi->karyawan[$i]->status ?></td>
-
-                    </tr>
-                    <?php $i++ ?>
+                            <td><?= $data['nama_karyawan'] ?></td>
+                            <td><?= $data['status'] ?></td>
+                        </tr>
+                        <?php $i++ ?>
+                    <?php } ?>
                 <?php } ?>
 
             </tbody>
