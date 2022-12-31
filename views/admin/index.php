@@ -2,7 +2,7 @@
 session_start();
 require_once '../../functions/admin/function.php';
 if (!isset($_SESSION["login"])) {
-    header("Location: ../login.php");
+    header("Location: ../../index.php");
     exit;
 }
 require_once '../../koneksi.php';

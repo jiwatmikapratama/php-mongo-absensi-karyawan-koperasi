@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../koneksi.php';
+require_once 'koneksi.php';
 if (isset($_SESSION["login"])) {
     header("Location: karyawan/index.php");
     exit;
@@ -27,10 +27,10 @@ if (isset($_POST["login"])) {
         // $_SESSION["email"] = $email;
 
         if ($email == "admin@gmail.com") {
-            header("Location: admin/index.php");
+            header("Location: views/admin/index.php");
             exit;
         } else {
-            header("Location: karyawan/index.php");
+            header("Location: views/karyawan/index.php");
             exit;
         }
     }
@@ -82,7 +82,7 @@ if (isset($_POST["login"])) {
             <div class="col-md-6">
                 <form class="" action="" method="POST">
                     <div class="container">
-                        <h1 class="text-center">Login Akun</h1>
+                        <h1 class="text-center">Login</h1>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" name="email" id="email">
