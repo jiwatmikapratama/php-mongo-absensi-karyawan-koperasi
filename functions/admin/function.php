@@ -1,9 +1,13 @@
 <?php
 require('../../koneksi.php');
-
+require '../../redisBD.php';
+$redis = new redisDB();
+$dtkey = $dtvalue = null;
+error_reporting(0);
 function buatAbsensi($dataAbsensi)
 {
     global $client;
+    global $redis;
 
     $collection = $client->absensi_karyawan->absensi;
 
@@ -13,6 +17,15 @@ function buatAbsensi($dataAbsensi)
         'tgl_absensi' => $_POST['tgl_absensi'],
         'karyawan' => []
     ]);
+
+    $insertOneResult = $client->absensi_karyawan->log_absensi->insertOne([
+
+        'nama' => $_POST['nama'],
+        'tgl_absensi' => $_POST['tgl_absensi'],
+        'karyawan' => []
+    ]);
+
+    $redis->InsertDataToKey($_POST['nama'], $_POST['tgl_absensi']);
 
     printf("Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
 
@@ -41,6 +54,8 @@ function updateAbsensi($dataAbsensi)
     // var_dump($updateOneResult->getUpdatedId());
 
     // return $updateOneResult->getUpdatedCount();
+    $_SESSION["success"] = "Data Absensi Berhasil Diupdate";
+    header("location: index.php");
 }
 
 function updateKaryawan($dataAbsensi)
@@ -66,6 +81,8 @@ function updateKaryawan($dataAbsensi)
     // var_dump($updateOneResult->getUpdatedId());
 
     // return $updateOneResult->getUpdatedCount();
+    $_SESSION['success'] = "Data Karyawan berhasil diubah";
+    header("location: index.php");
 }
 
 

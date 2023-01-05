@@ -26,12 +26,9 @@ if (isset($_POST["register"])) {
     printf("Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
 
     var_dump($insertOneResult->getInsertedId());
-    header("Location: login.php");
+    header("Location: index.php");
     return $insertOneResult->getInsertedCount();
 }
-
-
-
 ?>
 
 <!doctype html>
@@ -106,7 +103,7 @@ if (isset($_POST["register"])) {
 
                         <button type="submit" class="btn btn-dark" name="register">Submit</button>
                         <div class="mb-3 text-center">
-                            <p>Sudah punya akun? <a href="login.php">Login</a></p>
+                            <p>Sudah punya akun? <a href="../index.php">Login</a></p>
                         </div>
 
                 </form>

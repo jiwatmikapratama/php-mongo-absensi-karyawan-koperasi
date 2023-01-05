@@ -66,30 +66,12 @@ function absensiKaryawan($dataKaryawan)
                     'status' => $_POST['status']
 
                 ],
-                // 'absensi_status' => [
-                // ]
             ]
         ],
-
-
-
-        // 'nama_karyawan' => $_POST['nama_karyawan'],
-        // 'status' => $_POST['status']
-
-
-
     );
+    $_SESSION["success"] = "Absensi berhasil dilakukan";
+    header("location: index.php");
 }
-
-// if (isset($_GET['id'])) {
-//     $mhs = $collection->findOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);
-// }
-// if (isset($_POST['submit'])) {
-//     require 'config.php';
-//     $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectID($_GET['id'])]);
-//     $_SESSION['success'] = "Data Mahasiswa Berhasil dihapus";
-//     header("Location: index.php");
-// }
 
 function hapusKaryawan($dataKaryawan)
 {

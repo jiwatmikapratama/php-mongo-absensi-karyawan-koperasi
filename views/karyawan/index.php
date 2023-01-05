@@ -73,6 +73,13 @@ $getDataAbsensi = $absensiCollection->find();
     </header>
     <!--End Header -->
 
+    <?php if (isset($_SESSION["success"])) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= $_SESSION["success"]; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php } ?>
+
     <!-- Table Absensi -->
     <div class="container mt-4">
         <h2>Absen Karyawan</h2>

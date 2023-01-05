@@ -71,7 +71,12 @@ $getAbsensi = $absensiCollection->find();
     </head>
 
     <body>
-        <!-- <h1><?= $getDatakaryawanLogin ?></h1> -->
+        <?php if (isset($_SESSION["success"])) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= $_SESSION["success"]; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
         <div class="container">
             <!-- Admin -->
             <h2>Data Karyawan</h2>
@@ -127,6 +132,7 @@ $getAbsensi = $absensiCollection->find();
                             <td><?= $absensi->nama ?></td>
                             <td><?= date('d F Y', strtotime($absensi->tgl_absensi)) ?></td>
                             <td class="text-center">
+                                <a href="lihatAbsensi.php?id=<?= $absensi["_id"] ?>" class="btn btn-primary">Lihat Absensi</a>
                                 <a href="editAbsensi.php?id=<?= $absensi["_id"] ?>" class="btn btn-warning">Ubah Absensi</a>
                                 <a href="hapusAbsensi.php?id=<?= $absensi["_id"] ?>" onclick="confirm('Yakin?')" class="btn btn-danger">Hapus Absensi</a>
                             </td>

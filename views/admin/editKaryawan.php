@@ -15,17 +15,11 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['submit'])) {
     if (updateKaryawan($_POST) > 0) {
-        echo '<div class="alert alert-success" role="alert">
-        Data Karyawan Berhasil Diupdate
-      </div>';
+        $_SESSION['success'] = "Data Karyawan berhasil diubah";
         header("location: index.php");
     } else {
-        echo '<div class="alert alert-danger" role="alert">
-        Data Karyawan Gagal Diupdate
-      </div>';
+        $_SESSION['failed'] = "Data Karyawan gagal diubah";
     }
-    $_SESSION['success'] = "Data Mahasiswa berhasil diubah";
-    header("Location: index.php");
 }
 ?>
 

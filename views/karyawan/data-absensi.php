@@ -106,9 +106,6 @@ $getDataAbsensi = $absensiCollection->find(['_id' => $object]);
             </tbody>
         </table>
     </div>
-    <h1><?= $_SESSION["login"]  ?></h1>
-    <a href="../../functions/logout.php">Logout</a>
-
 
     <footer id="footer" class="text-center">
         <small>Copyright &copy; 2022 - Pendidikan Teknik Informatika</small>

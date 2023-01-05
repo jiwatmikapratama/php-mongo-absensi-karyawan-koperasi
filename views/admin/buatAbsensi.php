@@ -9,14 +9,10 @@ if (!isset($_SESSION["login"])) {
 if (isset($_POST['submit'])) {
 
     if (buatAbsensi($_POST) > 0) {
-        echo '<div class="alert alert-success" role="alert">
-        Data Berhasil Ditambahkan
-      </div>';
+        $_SESSION["success"] = "Data Absensi berhasil ditambahkan";
         header("location: index.php");
     } else {
-        echo '<div class="alert alert-danger" role="alert">
-        Data Gagal Ditambahkan
-      </div>';
+        $_SESSION["failed"] = "Data gagal ditambahkan";
     }
 }
 ?>
@@ -53,6 +49,27 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+    <!-- ======= Bagian Header --->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 class="logo"><a href="#"></a><a href="#">KOPERASI</a></h1>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <!-- <li><a class="nav-link scrollto" href="riwayat-absen.php">RIWAYAT ABSENSI</a></li> -->
+                    <li><a class="nav-link scrollto active" href="index.php">MENU ADMIN</a></li>
+                    <li><a class="nav-link scrollto" href="../../functions/logout.php">LOGOUT</a></li>
+
+                </ul>
+
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+
+        </div>
+    </header>
+    <!--End Header -->
+
     <div class="container">
         <div class="header text-center my-4">
             <h2>Buat Absensi</h2>

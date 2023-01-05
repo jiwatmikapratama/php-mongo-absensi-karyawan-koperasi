@@ -5,7 +5,6 @@ if (!isset($_SESSION["login"])) {
     header("Location: ../../index.php");
     exit;
 }
-require_once '../../functions/admin/function.php';
 
 $object = new MongoDB\BSON\ObjectID($_GET['id']);
 
@@ -15,17 +14,11 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['submit'])) {
     if (updateAbsensi($_POST) > 0) {
-        echo '<div class="alert alert-success" role="alert">
-        Data Absensi Berhasil Diupdate
-      </div>';
+        $_SESSION["success"] = "Data Absensi Berhasil Diupdate";
         header("location: index.php");
     } else {
-        echo '<div class="alert alert-danger" role="alert">
-        Data Absensi Gagal Diupdate
-      </div>';
+        $_SESSION["failed"] = "Data Absensi Gagal Diupdate";
     }
-    $_SESSION['success'] = "Data Mahasiswa berhasil diubah";
-    header("Location: index.php");
 }
 ?>
 

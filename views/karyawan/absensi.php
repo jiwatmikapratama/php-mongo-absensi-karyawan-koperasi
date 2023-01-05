@@ -1,11 +1,11 @@
 <?php
 session_start();
-require_once '../../functions/admin/function.php';
+require_once '../../functions/karyawan/function.php';
+// require_once '../../functions/admin/function.php';
 if (!isset($_SESSION["login"])) {
     header("Location: ../../index.php");
     exit;
 }
-require_once '../../functions/karyawan/function.php';
 
 $object = new MongoDB\BSON\ObjectID($_GET['id']);
 
@@ -15,17 +15,8 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['submit'])) {
     if (absensiKaryawan($_POST) > 0) {
-        echo '<div class="alert alert-success" role="alert">
-        Absensi berhasil direkam
-      </div>';
-        header("location: index.php");
     } else {
-        echo '<div class="alert alert-danger" role="alert">
-        Absensi gagal silahkan coba lagi
-      </div>';
     }
-    $_SESSION['success'] = "Data Mahasiswa berhasil diubah";
-    header("Location: index.php");
 }
 ?>
 
@@ -61,6 +52,27 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+    <!-- ======= Bagian Header --->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 class="logo"><a href="#"></a><a href="#">KOPERASI</a></h1>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <!-- <li><a class="nav-link scrollto" href="riwayat-absen.php">RIWAYAT ABSENSI</a></li> -->
+                    <li><a class="nav-link scrollto active" href="index.php">ABSENSI</a></li>
+                    <li><a class="nav-link scrollto" href="../../functions/logout.php">LOGOUT</a></li>
+
+                </ul>
+
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+
+        </div>
+    </header>
+    <!--End Header -->
+
     <div class="container">
         <div class="header text-center my-4">
             <h2>Absensi Karyawan</h2>
