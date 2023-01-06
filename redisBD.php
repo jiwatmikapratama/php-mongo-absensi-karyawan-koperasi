@@ -34,42 +34,6 @@ class redisDB extends Redis
         $this->close();
     }
 
-    /* mencari key redis */
-
-    public function FindRedis($keyredis)
-    {
-        try {
-            $check = $this->openRedis();
-            if ($check != false) {
-                $this->SELECT($this->db);
-                $resultRedis = $this->keys($keyredis);
-                $this->closeRedis();
-            }
-
-            return $resultRedis;
-        } catch (Throwable $e) {
-            $e->getMessage();
-        }
-    }
-
-    /* mendapatkan value dari redis key */
-
-    public function GetDatafromKeys($keyredis)
-    {
-        $findRedis = $this->FindRedis($keyredis);
-        if (count($findRedis) > 0) {
-            $this->openRedis();
-            $this->SELECT($this->db);
-            $arrData = $this->get($keyredis);
-            $this->closeRedis();
-        } else {
-            $arrData = null;
-        }
-        return $arrData;
-    }
-
-    /* menyimpan value ke redis */
-
     public function InsertDataToKey($keyredis, $value)
     {
         try {
@@ -88,22 +52,5 @@ class redisDB extends Redis
         }
     }
 
-    /* menghapus value redis */
 
-    public function RemoveRedis($keyredis)
-    {
-        try {
-            $check = $this->openRedis();
-            if ($check != false) {
-                $this->SELECT($this->db);
-                $this->del($keyredis);
-                $this->closeRedis();
-                $message = "success";
-            }
-        } catch (Throwable $e) {
-            throw $e;
-        }
-
-        return $message;
-    }
 }

@@ -26,7 +26,7 @@ if (isset($_POST["register"])) {
     printf("Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
 
     var_dump($insertOneResult->getInsertedId());
-    header("Location: index.php");
+    header("Location: ../index.php");
     return $insertOneResult->getInsertedCount();
 }
 ?>
