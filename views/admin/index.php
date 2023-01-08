@@ -143,7 +143,7 @@ $getAbsensi = $absensiCollection->find();
             </table>
         </div>
 
-
+        <br><br><br>
         <footer id="footer" class="text-center">
             <small>Copyright &copy; 2022 - Pendidikan Teknik Informatika</small>
 
